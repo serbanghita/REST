@@ -3,6 +3,13 @@
 A compact sequence of characters for describing a range of Uniform Resource Identifiers 
 through variable expansion, see [RFC 6570]. URI Templates provide a mechanism for abstracting a space of resource identifiers such that the variable parts can be easily identified and described.
 
+
+|Examples of URI Template in action|
+|-------------|
+|https://api.github.com|
+|https://api.github.com/search/repositories?q=mobile&per_page=10|
+
+
 ### Verbs
 
 |Verb|Description|
