@@ -55,14 +55,14 @@ From [What Every Developer should know about HTTP]
 
 # Attributes
 
-### ?expand=space,body.view,version,container
+#### `?expand=space,body.view,version,container`
 
 1. When GET-ing a complex resource.
 2. When POST-ing a new resource and you want the response to be expanded.
 
 From: [Atlassian REST API]
 
-### `?envelope=true`
+#### `?envelope=true` or `?callback`
 
 1. For cross domain requests via JSONP.
 2. For clients that cannot read headers.
@@ -75,6 +75,27 @@ callback_function({
   next_page: "https://..",
   response: {
     // ... actual JSON response body ... 
+  }
+})
+```
+
+Example from [GitHub Enterprise API]
+```
+$ curl https://api.github.com?callback=foo
+```
+```javascript
+/**/foo({
+  "meta": {
+    "status": 200,
+    "X-RateLimit-Limit": "5000",
+    "X-RateLimit-Remaining": "4966",
+    "X-RateLimit-Reset": "1372700873",
+    "Link": [ // pagination headers and other links
+      ["https://api.github.com?page=2", {"rel": "next"}]
+    ]
+  },
+  "data": {
+    // the data
   }
 })
 ```
