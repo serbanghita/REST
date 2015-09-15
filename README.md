@@ -1,7 +1,7 @@
 ### URI Template
 
 A compact sequence of characters for describing a range of Uniform Resource Identifiers 
-through variable expansion, see [RFC 6570].
+through variable expansion, see [RFC 6570]. URI Templates provide a mechanism for abstracting a space of resource identifiers such that the variable parts can be easily identified and described.
 
 ### Verbs
 
