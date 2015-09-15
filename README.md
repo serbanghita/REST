@@ -1,3 +1,16 @@
+### Verbs
+
+|Verb|Description|
+|-------------|-------------|
+|HEAD|Can be issued against any resource to get just the HTTP header info.|
+|GET|Used for retrieving resources.|
+|POST|Used for creating resources.|
+|PATCH|Used for updating resources with partial JSON data. For instance, an Issue resource has title and body attributes. A PATCH request may accept one or more of the attributes to update the resource. PATCH is a relatively new and uncommon HTTP verb, so resource endpoints also accept POST requests.|
+|PUT|Used for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero.|
+|DELETE|Used for deleting resources.|
+
+From [GitHub Enterprise API]
+
 ### POST response
 
 *200 OK*
@@ -53,5 +66,6 @@ callback_function({
 })
 ```
 
+[GitHub Enterprise API]:https://developer.github.com/enterprise/2.3/v3/
 [What Every Developer should know about HTTP]:https://www.amazon.com/gp/product/B0076Z6VMI/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1
 [Best practices for a pragmatic restful API]:http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
