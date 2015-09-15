@@ -83,4 +83,4 @@ callback_function({
 [What Every Developer should know about HTTP]:https://www.amazon.com/gp/product/B0076Z6VMI/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1
 [Best practices for a pragmatic restful API]:http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
 [Atlassian REST API]:https://docs.atlassian.com/confluence/REST/latest/
-[RFC6570]:http://tools.ietf.org/html/rfc6570
+[RFC 6570]:http://tools.ietf.org/html/rfc6570
