@@ -100,8 +100,30 @@ $ curl https://api.github.com?callback=foo
 })
 ```
 
+#### `?fields=AccountNumber,BillingPostalCode`
+
+Example response from [SalesForce SObject API]:
+
+```json
+{
+    "AccountNumber" : "CD656092",
+    "BillingPostalCode" : "27215"
+}
+```
+
+# Authentification
+
+Flow from [SalesForce API]:
+
+1. Web server flow, where the server can securely protect the consumer secret.
+2. User-agent flow, used by applications that cannot securely store the consumer secret.
+3. Username-password flow, where the application has direct access to user credentials.
+
+
 [GitHub Enterprise API]:https://developer.github.com/enterprise/2.3/v3/
 [What Every Developer should know about HTTP]:https://www.amazon.com/gp/product/B0076Z6VMI/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1
 [Best practices for a pragmatic restful API]:http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
 [Atlassian REST API]:https://docs.atlassian.com/confluence/REST/latest/
 [RFC 6570]:http://tools.ietf.org/html/rfc6570
+[SalesForce API]:https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
+[SalesForce SObject API]:https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/dome_get_field_values.htm
