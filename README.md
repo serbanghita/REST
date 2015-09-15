@@ -48,6 +48,14 @@ issued with a separate GET message.
 
 From [What Every Developer should know about HTTP]
 
+# Attributes
+
+### ?expand=space,body.view,version,container
+
+1. When GET-ing a complex resource.
+2. When POST-ing a new resource and you want the response to be expanded.
+
+From: [Atlassian REST API]
 
 ### `?envelope=true`
 
@@ -69,3 +77,4 @@ callback_function({
 [GitHub Enterprise API]:https://developer.github.com/enterprise/2.3/v3/
 [What Every Developer should know about HTTP]:https://www.amazon.com/gp/product/B0076Z6VMI/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1
 [Best practices for a pragmatic restful API]:http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
+[Atlassian REST API]:https://docs.atlassian.com/confluence/REST/latest/
