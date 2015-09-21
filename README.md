@@ -1,3 +1,30 @@
+# History
+
+The paper [Architectural Styles and the Design of Network-based Software Architectures] by
+Roy Thomas Fielding introduces a series of *patterns* that offers software companies a faster and easier way to build and integrate web service APIs. Instead of defining of set of standards that supported multiple protocols and payload formats, Fielding suggested the use of the HTTP specification itself as a starting point. 
+
+Since there are a variety of HTTP verbs already (e.g. GET, POST, PUT, DELETE, PATCH), and response codes provide details
+on the success or failure of the call (e.g. 200 OK, 404 NOT FOUND, etc) most of the work was already done. Services can accept incoming payloads in a variety of formats, using HTTP request headers to indicate the type(s) of data formats desired including media such as images and videos.
+
+Rather than requiring a specification, Fielding encouraged the use of common patterns on top of
+these specifications. Calling it *REST* ("__Representational State Transfer__"), Fielding suggested that
+services *should be stateless*, just as HTTP is stateless, further simplifying the service implementation
+requirements.
+
+From [A Practical Approach to API Design]
+
+
+
+# Designing
+
+1. Identify participants
+2. Identify activities
+3. Break each activity into steps
+4. Create and group API definitions and methods
+5. Validate your API by testing
+
+
+
 ### URI Template
 
 A compact sequence of characters for describing a range of Uniform Resource Identifiers 
@@ -42,6 +69,25 @@ URI by which the newly created document should be known.
 The response to the request can be found under another URI using a GET method. When received in response to a 
 POST (or PUT/DELETE), it should be assumed that the server has received the data and the redirect should be 
 issued with a separate GET message.
+
+#### POST reponse code, link and body
+
+If all goes well, the service replies with a response code of 201 to indicate that there's a new resource in the world.
+
+```
+HTTP/1.1 201 Created
+Location: slots/1234/appointment
+[various headers]
+
+<appointment>
+  <slot id = "1234" doctor = "mjones" start = "1400" end = "1450"/>
+  <patient id = "jsmith"/>
+</appointment>
+```
+
+The 201 response includes a location attribute with a URI that the client can use to GET the current state of that resource in the future. The response here also *includes a representation of that resource* to save the client an extra call right now.
+
+From [Richardson Maturity Model]
 
 ### Response codes
 
@@ -151,7 +197,9 @@ Flow from [SalesForce API]:
 2. User-agent flow, used by applications that cannot securely store the consumer secret.
 3. Username-password flow, where the application has direct access to user credentials.
 
-
+[Architectural Styles and the Design of Network-based Software Architectures]:http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
+[Richardson Maturity Model]:http://martinfowler.com/articles/richardsonMaturityModel.html
+[A Practical Approach to API Design]:https://leanpub.com/restful-api-design
 [GitHub Enterprise API]:https://developer.github.com/enterprise/2.3/v3/
 [What Every Developer should know about HTTP]:https://www.amazon.com/gp/product/B0076Z6VMI/ref=oh_aui_d_detailpage_o00_?ie=UTF8&psc=1
 [Best practices for a pragmatic restful API]:http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
