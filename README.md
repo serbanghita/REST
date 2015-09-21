@@ -13,6 +13,11 @@ requirements.
 
 From [A Practical Approach to API Design]
 
+### [Richardson Maturity Model]
+
+* **Level 1** - tackles the question of handling complexity by using divide and conquer, breaking a large service endpoint down into multiple resources. (Example: RPC-style service)
+* **Level 2** - introduces a standard set of verbs so that we handle similar situations in the same way, removing unnecessary variation. (Example: RPC-style service that behaves differently on POST and GET)
+* **Level 3** - introduces discoverability, providing a way of making a protocol more self-documenting. (HATEOAS)
 
 
 # Designing
@@ -61,9 +66,20 @@ In a POST request, the response will contain an entity describing or containing 
 Following a POST command, this indicates success, but the textual part of the response line indicates the 
 URI by which the newly created document should be known.
 
-*Specs:* http://tools.ietf.org/html/rfc2616#section-10.2.2
+ > The newly created resource can be referenced by the URI(s) 
+   returned in the entity of the response, with the most specific URI
+   for the resource given by a **Location header** field. The response
+   **SHOULD include an entity** containing a list of resource
+   characteristics and location(s) from which the user or user agent can
+   choose the one most appropriate. The entity format is specified by
+   the media type given in the Content-Type header field.
 
+*Specs:* http://tools.ietf.org/html/rfc2616#section-10.2.2
 *Example:* http://docs.stormpath.com/rest/product-guide/#creating-resources
+
+  > There's no absolute standard as to how to represent hypermedia controls.
+  
+From [Richardson Maturity Model]
 
 *303 See Other* (since HTTP/1.1)
 The response to the request can be found under another URI using a GET method. When received in response to a 
@@ -189,6 +205,12 @@ Example response from [SalesForce SObject API]:
 }
 ```
 
+# Hypermedia
+
+  > There's no absolute standard as to how to represent hypermedia controls. What I've done here is to use the current recommendations of the REST in Practice team, which is to follow ATOM [RFC 4287] I use a `<link>` element with a uri attribute for the target URI and a rel attribute for to describe the kind of relationship. A well known relationship (such as `self` for a reference to the element itself) is bare, any specific to that server is a fully qualified URI. ATOM states that the definition for well-known `linkrels` is the [Registry of Link Relations]. As I write these are confined to what's done by ATOM, which is generally seen as a leader in level 3 restfulness.
+
+From [Richardson Maturity Model]
+
 # Authentification
 
 Flow from [SalesForce API]:
@@ -207,3 +229,5 @@ Flow from [SalesForce API]:
 [RFC 6570]:http://tools.ietf.org/html/rfc6570
 [SalesForce API]:https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_authentication.htm
 [SalesForce SObject API]:https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/dome_get_field_values.htm
+[RFC 4287]:https://tools.ietf.org/html/rfc4287#section-4.2.7
+[Registry of Link Relations]:https://tools.ietf.org/html/rfc4287#section-7.1
