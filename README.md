@@ -218,6 +218,34 @@ Flow from [SalesForce API]:
 1. Web server flow, where the server can securely protect the consumer secret.
 2. User-agent flow, used by applications that cannot securely store the consumer secret.
 3. Username-password flow, where the application has direct access to user credentials.
+ 
+# Debugging
+
+Debug long output with headers included.
+
+```
+curl -i -s -v https://api.github.com/users/serbanghita 2>&1 | less
+```
+
+Basic authentification.
+
+```
+curl -u "serbanghita" https://api.github.com
+```
+
+OAUTH2 authentification using headers
+
+```
+curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com
+```
+
+POST-ing on a regular form
+
+```
+curl -X POST http://secure.avangate.com/cpanel/ -d email="test@test.com" -d password="123456" -d Login="Login"
+```
+
+
 
 [Architectural Styles and the Design of Network-based Software Architectures]:http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 [Richardson Maturity Model]:http://martinfowler.com/articles/richardsonMaturityModel.html
