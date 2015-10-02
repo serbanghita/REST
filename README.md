@@ -233,16 +233,29 @@ Basic authentification.
 curl -u "serbanghita" https://api.github.com
 ```
 
-OAUTH2 authentification using headers
+OAUTH2 authentification using headers.
 
 ```
 curl -H "Authorization: token OAUTH-TOKEN" https://api.github.com
 ```
 
-POST-ing on a regular form
+POST-ing on a regular form.
 
 ```
 curl -X POST http://secure.avangate.com/cpanel/ -d email="test@test.com" -d password="123456" -d Login="Login"
+```
+
+POST-ing on a regular form with body request from file.
+
+```
+curl -X POST http://secure.avangate.com/cpanel/ -d @data.txt
+```
+
+Storing and receiving cookies between requests.
+
+```
+curl -c cookiejar.txt http://secure.avangate.com/cpanel/
+curl -b cookiesjar.txt http://secure.avangate.com/cpanel/
 ```
 
 
